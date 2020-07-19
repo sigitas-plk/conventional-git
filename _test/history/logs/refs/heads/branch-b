@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099774 +0100	branch: Created from HEAD
+ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef dc0d5a4d82b093cf91629c549444472d52cb2333 sigitas <code@pleikys.com> 1595099827 +0100	commit: feat(branch-b): unmerged branch in master JIR-004

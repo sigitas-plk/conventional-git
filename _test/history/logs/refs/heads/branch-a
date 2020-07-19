@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 c43346c2914ae53bb4af7a9b9013c7c5378c9973 sigitas <code@pleikys.com> 1595099506 +0100	branch: Created from HEAD
+c43346c2914ae53bb4af7a9b9013c7c5378c9973 e72439b41a31f7aaee69f5679ad996719240103c sigitas <code@pleikys.com> 1595099550 +0100	commit: refactor: added merge conflict
+e72439b41a31f7aaee69f5679ad996719240103c 71b88ce5f8899f30195a28626c2ee68dab8e761b sigitas <code@pleikys.com> 1595099566 +0100	commit (amend): refactor: added merge conflict JIR-001
+71b88ce5f8899f30195a28626c2ee68dab8e761b 2793f8e88a6a2fefb919df3a91af5eb0a3e98ea8 sigitas <code@pleikys.com> 1595099673 +0100	commit: feat: another file added JIR-001

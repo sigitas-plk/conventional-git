@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 69aefaae7217010f8675d1c2d055cbbfd4ded81d sigitas <code@pleikys.com> 1595099450 +0100	commit (initial): feat: initial commit
+69aefaae7217010f8675d1c2d055cbbfd4ded81d c43346c2914ae53bb4af7a9b9013c7c5378c9973 sigitas <code@pleikys.com> 1595099487 +0100	commit: feat(file): added text to file
+c43346c2914ae53bb4af7a9b9013c7c5378c9973 c43346c2914ae53bb4af7a9b9013c7c5378c9973 sigitas <code@pleikys.com> 1595099506 +0100	checkout: moving from master to branch-a
+c43346c2914ae53bb4af7a9b9013c7c5378c9973 e72439b41a31f7aaee69f5679ad996719240103c sigitas <code@pleikys.com> 1595099550 +0100	commit: refactor: added merge conflict
+e72439b41a31f7aaee69f5679ad996719240103c 71b88ce5f8899f30195a28626c2ee68dab8e761b sigitas <code@pleikys.com> 1595099566 +0100	commit (amend): refactor: added merge conflict JIR-001
+71b88ce5f8899f30195a28626c2ee68dab8e761b c43346c2914ae53bb4af7a9b9013c7c5378c9973 sigitas <code@pleikys.com> 1595099596 +0100	checkout: moving from branch-a to master
+c43346c2914ae53bb4af7a9b9013c7c5378c9973 58e0c4884bdce4ebf60569daf99a9b3497339a4e sigitas <code@pleikys.com> 1595099638 +0100	commit: feat(file)!: breaking change in file JIR-002
+58e0c4884bdce4ebf60569daf99a9b3497339a4e 71b88ce5f8899f30195a28626c2ee68dab8e761b sigitas <code@pleikys.com> 1595099644 +0100	checkout: moving from master to branch-a
+71b88ce5f8899f30195a28626c2ee68dab8e761b 2793f8e88a6a2fefb919df3a91af5eb0a3e98ea8 sigitas <code@pleikys.com> 1595099673 +0100	commit: feat: another file added JIR-001
+2793f8e88a6a2fefb919df3a91af5eb0a3e98ea8 58e0c4884bdce4ebf60569daf99a9b3497339a4e sigitas <code@pleikys.com> 1595099678 +0100	checkout: moving from branch-a to master
+58e0c4884bdce4ebf60569daf99a9b3497339a4e ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099737 +0100	commit (merge): Merge branch 'branch-a'
+ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099774 +0100	checkout: moving from master to branch-b
+ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef dc0d5a4d82b093cf91629c549444472d52cb2333 sigitas <code@pleikys.com> 1595099827 +0100	commit: feat(branch-b): unmerged branch in master JIR-004
+dc0d5a4d82b093cf91629c549444472d52cb2333 ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099830 +0100	checkout: moving from branch-b to master
+ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef 716bb055c6645e67705f4f3464c8709de2a98db1 sigitas <code@pleikys.com> 1595100150 +0100	commit: unconventional commit

@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 69aefaae7217010f8675d1c2d055cbbfd4ded81d sigitas <code@pleikys.com> 1595099450 +0100	commit (initial): feat: initial commit
+69aefaae7217010f8675d1c2d055cbbfd4ded81d c43346c2914ae53bb4af7a9b9013c7c5378c9973 sigitas <code@pleikys.com> 1595099487 +0100	commit: feat(file): added text to file
+c43346c2914ae53bb4af7a9b9013c7c5378c9973 58e0c4884bdce4ebf60569daf99a9b3497339a4e sigitas <code@pleikys.com> 1595099638 +0100	commit: feat(file)!: breaking change in file JIR-002
+58e0c4884bdce4ebf60569daf99a9b3497339a4e ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099737 +0100	commit (merge): Merge branch 'branch-a'
+ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef 716bb055c6645e67705f4f3464c8709de2a98db1 sigitas <code@pleikys.com> 1595100150 +0100	commit: unconventional commit
