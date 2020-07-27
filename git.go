@@ -3,6 +3,7 @@ package cnv
 import (
 	"bytes"
 	"encoding/xml"
+	"fmt"
 	"io"
 	"os/exec"
 	"time"
@@ -28,7 +29,6 @@ type Commit struct {
 //
 // excludes merge commits
 func GetCommits(path, to, from string) (*[]Commit, error) {
-
 	if from == "" {
 		from = "HEAD"
 	}
@@ -36,7 +36,9 @@ func GetCommits(path, to, from string) (*[]Commit, error) {
 	if to != "" {
 		logTo = "..." + to
 	}
+
 	// using XML not json since JSON breaks with commint body containing new lines
+	// <![CDATA[]]> is to escape special characters in commit title and body e.g. &"<'
 	format := `
 	<commit>
 		<hash>%H</hash>
@@ -44,17 +46,18 @@ func GetCommits(path, to, from string) (*[]Commit, error) {
 		<author>%an</author>
 		<email>%ae</email>
 		<date>%aI</date>
-		<title>%s</title>
-		<body>%b</body>
+		<title><![CDATA[%s]]></title>
+		<body><![CDATA[%b]]></body>
 	</commit>
 	`
+
 	// 'git log hash...hash', if toHash is empty 'git log hash'
 	cmd := exec.Command("git", "log", from+logTo, "--pretty="+format, "--no-merges")
 	cmd.Dir = path
 
 	out, err := cmd.Output()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error running git log '%s%s': %s", from, logTo, err)
 	}
 
 	d := xml.NewDecoder(bytes.NewBuffer(out))
