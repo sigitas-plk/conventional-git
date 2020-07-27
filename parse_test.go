@@ -1,70 +1,9 @@
-package main
+package cnv
 
 import (
-	"bytes"
 	"reflect"
 	"testing"
 )
-
-func TestCommitTypeString(t *testing.T) {
-
-	expected := map[CommitType]string{
-		Unconventional: "UNCONVENTIONAL",
-		Build:          "build",
-		Ci:             "ci",
-		Chore:          "chore",
-		Docs:           "docs",
-		Feat:           "feat",
-		Fix:            "fix",
-		Perf:           "perf",
-		Refactor:       "refactor",
-		Revert:         "revert",
-		Style:          "style",
-		Test:           "test",
-	}
-
-	for k, v := range expected {
-		if actual := k.String(); actual != v {
-			t.Errorf("want %s, got %s", v, actual)
-		}
-	}
-}
-
-func TestGetCommitType(t *testing.T) {
-
-	expected := map[string]CommitType{
-		"UNCONVENTIONAL":  Unconventional,
-		"build":           Build,
-		"ci":              Ci,
-		"chore":           Chore,
-		"docs":            Docs,
-		"feat":            Feat,
-		"fix":             Fix,
-		"perf":            Perf,
-		"refactor":        Refactor,
-		"revert":          Revert,
-		"style":           Style,
-		"test":            Test,
-		"unexpected_type": Unconventional,
-	}
-
-	for k, v := range expected {
-		if actual := GetCommitType(k); actual != v {
-			t.Errorf("want type %s, got %s", v, actual)
-		}
-	}
-}
-
-func TestCommitTypeMarshalJSON(t *testing.T) {
-
-	expected := []byte("\"feat\"")
-
-	actual, _ := Feat.MarshalJSON()
-
-	if !bytes.Equal(expected, actual) {
-		t.Errorf("want %s, got %s", expected, actual)
-	}
-}
 
 func TestParse(t *testing.T) {
 

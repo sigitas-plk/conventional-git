@@ -1,57 +1,10 @@
-package main
+package cnv
 
 import (
-	"bytes"
 	"regexp"
 	"strings"
 	"time"
 )
-
-// list of allowed commit types and fallback 'Unconventional'
-const (
-	Unconventional CommitType = iota
-	Build
-	Ci
-	Chore
-	Docs
-	Feat
-	Fix
-	Perf
-	Refactor
-	Revert
-	Style
-	Test
-)
-
-// CommitType union type of all allowed commit types
-type CommitType int
-
-var (
-	types = [12]string{"UNCONVENTIONAL", "build", "ci", "chore", "docs", "feat", "fix", "perf", "refactor", "revert", "style", "test"}
-)
-
-func (ct CommitType) String() string {
-	return types[ct]
-}
-
-// MarshalJSON returns string commit type should be marshaled to e.g. "ci"
-func (ct CommitType) MarshalJSON() ([]byte, error) {
-	buffer := bytes.NewBufferString(`"`)
-	buffer.WriteString(types[ct])
-	buffer.WriteString(`"`)
-	return buffer.Bytes(), nil
-}
-
-// GetCommitType converts given string to CommitType
-// returns Unconventional if unexpected type provided
-func GetCommitType(str string) CommitType {
-	for i, v := range types {
-		if str == v {
-			return CommitType(i)
-		}
-	}
-	return Unconventional
-}
 
 var (
 	jiraRegexp     = regexp.MustCompile(`(\b[A-Z][A-Z0-9]{1,10}-[0-9]+\b)`)
@@ -135,7 +88,10 @@ func Parse(c *Commit) ParsedCommit {
 
 	parsed.Scope = cc["scope"]
 	parsed.Title = cc["title"]
-	parsed.Type = GetCommitType(cc["type"])
+
+	if t := GetCommitType(cc["type"]); t != nil {
+		parsed.Type = *t
+	}
 
 	if _, ok := cc["wip"]; ok {
 		parsed.WorkInProgress = true

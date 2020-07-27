@@ -1,10 +1,10 @@
-package main
+package cnv
 
 import (
 	"testing"
 )
 
-// _test/history git log --all --decorate --oneline --graph
+// test/sample-git-history git log --all --decorate --oneline --graph
 //
 // * 716bb05 (HEAD -> master) unconventional commit
 // | * dc0d5a4 (branch-b) feat(branch-b): unmerged branch in master JIR-004
@@ -18,7 +18,7 @@ import (
 // * c43346c feat(file): added text to file
 // * 69aefaa (tag: v1.0) feat: initial commit
 func TestGetCommitsWithTags(t *testing.T) {
-	got, err := GetCommits("_test/history", "v1.0", "v2.0")
+	got, err := GetCommits("test/sample-git-history", "v1.0", "v2.0")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
@@ -35,7 +35,7 @@ func TestGetCommitsWithTags(t *testing.T) {
 }
 
 func TestGetCommitsWithShortHashes(t *testing.T) {
-	got, err := GetCommits("_test/history", "ac1ff15", "69aefaa")
+	got, err := GetCommits("test/sample-git-history", "ac1ff15", "69aefaa")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
@@ -52,7 +52,7 @@ func TestGetCommitsWithShortHashes(t *testing.T) {
 }
 
 func TestGetCommitsWithLongHashes(t *testing.T) {
-	got, err := GetCommits("_test/history", "ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef", "69aefaae7217010f8675d1c2d055cbbfd4ded81d")
+	got, err := GetCommits("test/sample-git-history", "ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef", "69aefaae7217010f8675d1c2d055cbbfd4ded81d")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
@@ -69,7 +69,7 @@ func TestGetCommitsWithLongHashes(t *testing.T) {
 }
 
 func TestGetCommitsNoMergeCommits(t *testing.T) {
-	got, err := GetCommits("_test/history", "v1.0", "HEAD")
+	got, err := GetCommits("test/sample-git-history", "v1.0", "HEAD")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
@@ -89,7 +89,7 @@ func TestGetCommitsReturnCommitInfo(t *testing.T) {
 		AuthorEmail: "code@pleikys.com",
 		Title:       "unconventional commit",
 	}
-	get, err := GetCommits("_test/history", "ac1ff15", "")
+	get, err := GetCommits("test/sample-git-history", "ac1ff15", "")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
