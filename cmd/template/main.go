@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	cnv "github.com/conventional-git"
+	cnv "github.com/sigitas-plk/conventional-git"
 )
 
 var (

@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	cnv "github.com/conventional-git"
+	cnv "github.com/sigitas-plk/conventional-git"
 )
 
 type includeTypes []cnv.CommitType
