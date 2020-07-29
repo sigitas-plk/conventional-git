@@ -3,7 +3,6 @@ package cnv
 const TemplateHtml = `{{- define "item"}}
 <li>{{if .Scope}}{{.Scope }}{{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} <span>({{.Author}})</span></li>
 {{- end -}}
-<h2>[{{.Version}}] - {{.Date}}</h2>
 {{- if .BreakingChanges}}
 <h3>BREAKING CHANGES</h3>
 <ul>
@@ -33,6 +32,22 @@ const TemplateHtml = `{{- define "item"}}
 <ul>
     {{- range .Changed}}
         {{- template "item" .}}
+    {{- end}}
+</ul>
+{{- end}}
+{{- if .Reverted}}
+<h3>Rolled back</h3>
+<ul>
+    {{- range .Reverted}}
+        {{- template "item" .}}
+    {{- end}}
+</ul>
+{{- end}}
+{{- if .Other}}
+<h3>Other</h3>
+<ul>
+    {{- range .Other -}}
+<li>{{if .Type}}{{.Type}}: {{end}}{{if .Scope}}{{.Scope }}{{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} <span>({{.Author}})</span></li>
     {{- end}}
 </ul>
 {{- end}}
