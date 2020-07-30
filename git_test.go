@@ -1,12 +1,16 @@
 package cnv
 
 import (
+	"os/exec"
+	"strings"
 	"testing"
 )
 
 // test/sample-git-history git log --all --decorate --oneline --graph
 //
-// * 716bb05 (HEAD -> master) unconventional commit
+// * f38f3f2 (HEAD -> master) ci: commit title with special characters '@"&<>/`#][.,!$
+// * 28efce4 refactor: some title about hard work - with new line as seperator - and some other text
+// * 716bb05 unconventional commit
 // | * dc0d5a4 (branch-b) feat(branch-b): unmerged branch in master JIR-004
 // |/
 // *   ac1ff15 (tag: v2.0) Merge branch 'branch-a'
@@ -89,7 +93,7 @@ func TestGetCommitsReturnCommitInfo(t *testing.T) {
 		AuthorEmail: "code@pleikys.com",
 		Title:       "unconventional commit",
 	}
-	get, err := GetCommits("test/sample-git-history", "ac1ff15", "")
+	get, err := GetCommits("test/sample-git-history", "ac1ff15", "716bb05")
 	if err != nil {
 		t.Errorf("%s", err)
 	}
@@ -114,5 +118,25 @@ func TestGetCommitsReturnCommitInfo(t *testing.T) {
 
 	if c.Title != exp.Title {
 		t.Errorf("want %s title, got %s", exp.Title, c.Title)
+	}
+}
+
+func TestGetCommitsShouldFallbackToHead(t *testing.T) {
+	cmd := exec.Command("git", "rev-parse", "HEAD")
+	cmd.Dir = "test/sample-git-history"
+	out, err := cmd.Output()
+	if err != nil {
+		t.Errorf("%s", err)
+	}
+
+	get, err := GetCommits("test/sample-git-history", "ac1ff15", "")
+	if err != nil {
+		t.Errorf("%s", err)
+	}
+	firstHash := (*get)[0].Hash
+	headHash := strings.TrimSpace(string(out))
+
+	if headHash != firstHash {
+		t.Errorf("expected to fallback to HEAD hash %s, got %s", headHash, firstHash)
 	}
 }

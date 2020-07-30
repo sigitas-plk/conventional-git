@@ -1,1 +1,14 @@
-unconventional commit
+ci: commit title with special characters '@"&<>/`#][.,!$
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Jul 30 21:48:24 2020 +0100
+#
+# On branch master
+# Changes to be committed:
+#	modified:   file
+#
+# Untracked files:
+#	.gitignore
+#

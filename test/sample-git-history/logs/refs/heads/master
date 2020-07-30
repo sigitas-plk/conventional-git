@@ -3,3 +3,8 @@
 c43346c2914ae53bb4af7a9b9013c7c5378c9973 58e0c4884bdce4ebf60569daf99a9b3497339a4e sigitas <code@pleikys.com> 1595099638 +0100	commit: feat(file)!: breaking change in file JIR-002
 58e0c4884bdce4ebf60569daf99a9b3497339a4e ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef sigitas <code@pleikys.com> 1595099737 +0100	commit (merge): Merge branch 'branch-a'
 ac1ff15ae0ddd6c0fd5f6fd0e365b9e5260f3fef 716bb055c6645e67705f4f3464c8709de2a98db1 sigitas <code@pleikys.com> 1595100150 +0100	commit: unconventional commit
+716bb055c6645e67705f4f3464c8709de2a98db1 58842256b4abe509f8526d4aa4acb87a5385f2cc sigitas <code@pleikys.com> 1596142056 +0100	commit: asdf
+58842256b4abe509f8526d4aa4acb87a5385f2cc 28efce470cb2030ef434db89c1e8a73e2938b066 sigitas <code@pleikys.com> 1596142060 +0100	commit (amend): refactor: some title about hard workd
+28efce470cb2030ef434db89c1e8a73e2938b066 4b308420a5daf9ab38f4e186cbc68e98c0a8b83f sigitas <code@pleikys.com> 1596142104 +0100	commit: asdf
+4b308420a5daf9ab38f4e186cbc68e98c0a8b83f f38f3f2e9f4c68c4ba187c753fe747ad118b0138 sigitas <code@pleikys.com> 1596142108 +0100	commit (amend): ci: commit title with special characters '@"&<>/`#][.,!$
+f38f3f2e9f4c68c4ba187c753fe747ad118b0138 28efce470cb2030ef434db89c1e8a73e2938b066 sigitas <code@pleikys.com> 1596143296 +0100	reset: moving to HEAD~
