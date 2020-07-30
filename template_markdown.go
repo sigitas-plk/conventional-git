@@ -2,7 +2,7 @@ package cnv
 
 // TemplateMarkdown markdown template
 const TemplateMarkdown = "{{- define \"item\"}} - {{if .Scope}}**{{.Scope }}** {{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} {{.ShortHash}}\r\n{{end -}}" +
-	"{{- define \"itemWithType\"}}- {{if .Type}}{{.Type}}: {{end}}{{if .Scope}}**{{.Scope }}** {{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} {{.ShortHash}}{{end -}}" +
+	"{{- define \"itemWithType\"}}- {{if .Type}}{{.Type}}: {{end}}{{if .Scope}}**{{.Scope }}** {{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} {{.ShortHash}}\r\n{{end -}}" +
 	"{{if .BreakingChanges}}#### BREAKING CHANGES\r\n{{range .BreakingChanges}}{{template \"item\" .}}{{end}}{{end}}" +
 	"{{if .Added}}#### Added\r\n{{range .Added}}{{template \"item\" .}}{{end}}{{end}}" +
 	"{{if .Fixed}}#### Fixed\r\n{{range .Fixed}}{{template \"item\" .}}{{end}}{{end}}" +

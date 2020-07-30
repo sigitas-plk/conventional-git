@@ -80,7 +80,7 @@ func groupChanges(changes *[]ParsedCommit) *groupedChangelist {
 			gc.Changed = append(gc.Changed, c)
 		case Revert:
 			gc.Reverted = append(gc.Reverted, c)
-		default:
+		case Ci, Build, Docs, Chore, Style, Test:
 			gc.Other = append(gc.Other, c)
 		}
 	}
