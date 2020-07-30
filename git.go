@@ -1,23 +1,25 @@
 package cnv
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/xml"
 	"fmt"
 	"io"
 	"os/exec"
+	"strings"
 	"time"
 )
 
 // Commit information from git log
 type Commit struct {
-	Hash        string    `xml:"hash"`
-	ShortHash   string    `xml:"short"`
-	Author      string    `xml:"author"`
-	AuthorEmail string    `xml:"email"`
-	Date        time.Time `xml:"date"`
-	Title       string    `xml:"title"`
-	Body        string    `xml:"body"`
+	Hash        string
+	ShortHash   string
+	Author      string
+	AuthorEmail string
+	Date        time.Time
+	Title       string
+	Body        string
 }
 
 // GetCommits retrieves list of commits between to hashes
@@ -46,8 +48,7 @@ func GetCommits(path, to, from string) (*[]Commit, error) {
 		<author>%an</author>
 		<email>%ae</email>
 		<date>%aI</date>
-		<title><![CDATA[%s]]></title>
-		<body><![CDATA[%b]]></body>
+		<body><![CDATA[%B]]></body>
 	</commit>
 	`
 
@@ -63,15 +64,53 @@ func GetCommits(path, to, from string) (*[]Commit, error) {
 	d := xml.NewDecoder(bytes.NewBuffer(out))
 	var commits []Commit
 	for {
-		var c Commit
-		err := d.Decode(&c)
+		var rc rawCommit
+		err := d.Decode(&rc)
 		if err != nil {
 			if err == io.EOF {
 				break
 			}
 			return nil, err
 		}
+		title, body, err := toTitleAndBody(rc.Body)
+		if err != nil {
+			return nil, err
+		}
+		c := Commit{
+			Hash:        rc.Hash,
+			ShortHash:   rc.ShortHash,
+			Date:        rc.Date,
+			Author:      rc.Author,
+			AuthorEmail: rc.AuthorEmail,
+			Title:       title,
+			Body:        body,
+		}
 		commits = append(commits, c)
 	}
 	return &commits, nil
+}
+
+type rawCommit struct {
+	Hash        string    `xml:"hash"`
+	ShortHash   string    `xml:"short"`
+	Author      string    `xml:"author"`
+	AuthorEmail string    `xml:"email"`
+	Date        time.Time `xml:"date"`
+	Body        string    `xml:"body"`
+}
+
+// git log %s considers a subject everything until empty space
+// Since we want to consider new lines as well, gotta split it ourselves
+func toTitleAndBody(rawBody string) (string, string, error) {
+	rawTrimmed := strings.TrimSpace(rawBody)
+	sc := bufio.NewScanner(strings.NewReader(rawTrimmed))
+	title := ""
+	body := ""
+	if ok := sc.Scan(); ok {
+		title = sc.Text()
+		for sc.Scan() {
+			body += fmt.Sprintln(sc.Text())
+		}
+	}
+	return title, body, sc.Err()
 }
