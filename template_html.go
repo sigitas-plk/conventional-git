@@ -1,7 +1,7 @@
 package cnv
 
 const TemplateHtml = `{{- define "item"}}
-<li>{{if .Scope}}{{.Scope }}{{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} <span>({{.Author}})</span></li>
+<li>{{if .Scope}}<strong>{{.Scope }}</strong> {{end}}{{.Title}}{{range .Tickets}} {{.}}{{end}} <span>({{.Author}})</span></li>
 {{- end -}}
 {{- if .BreakingChanges}}
 <h3>BREAKING CHANGES</h3>
