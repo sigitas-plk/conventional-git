@@ -1,10 +1,5 @@
 package cnv
 
-import (
-	"fmt"
-	"strings"
-)
-
 // CommitType union type of all conventional commit types allowed
 type CommitType string
 
@@ -40,16 +35,6 @@ var (
 		"test":           Test,
 	}
 )
-
-// UnmarshalJSON convert JSON string value of type to CommitType
-func (ct *CommitType) UnmarshalJSON(b []byte) error {
-	commitType := strings.Trim(string(b), `"`)
-	if v, ok := types[commitType]; ok {
-		*ct = v
-		return nil
-	}
-	return fmt.Errorf("unexpected commit type received '%s'", commitType)
-}
 
 // GetCommitType converts given string to CommitType
 // returns Unconventional if unexpected type provided
