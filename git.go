@@ -40,12 +40,12 @@ func GetCommits(path, to, from string) (*[]Commit, error) {
 	}
 
 	// using XML not json since JSON breaks with commint body containing new lines
-	// <![CDATA[]]> is to escape special characters in commit title and body e.g. &"<'
+	// <![CDATA[]]> is to escape special characters in commit title, body and author e.g. &"<'
 	format := `
 	<commit>
 		<hash>%H</hash>
 		<short>%h</short>
-		<author>%an</author>
+		<author><![CDATA[%an]]></author>
 		<email>%ae</email>
 		<date>%aI</date>
 		<body><![CDATA[%B]]></body>
